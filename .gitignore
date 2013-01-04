@@ -1,0 +1,14 @@
+*.egg
+*.egg-info
+*.pyc
+*~
+\#*\#
+\.\#*
+.coverage
+build/
+dist/
+env*/
+bin/
+include/
+local/
+lib/
