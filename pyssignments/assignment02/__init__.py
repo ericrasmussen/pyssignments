@@ -4,11 +4,11 @@ python strings or filepaths containing text) and then answer questions about
 the text that it read in.
 
 The current implementation is missing some functionality and has some
-broken functionality. Additionally, some of the code here may be a niave
+broken functionality. Additionally, some of the code here may be a naive
 approach where a better solution is available using some feature of the python
 standard lib.
 
-You task is to make these class work as defined in the docstrings and make the
+Your task is to make these class work as defined in the docstrings and make the
 tests written in tests.py pass. As on the previous assignment you will not need
 to change a line of code in tests.py.
 """
@@ -37,7 +37,7 @@ class WordCounter(object):
     def read_text_string(self, text_string):
         """
         Reads a text string into the 'memory' of our class. This function can
-        be called repeatadly to read multiple text strings into memory for
+        be called repeatedly to read multiple text strings into memory for
         querying.
         """
         read_words_list = self.get_word_list(text_string)
@@ -57,7 +57,7 @@ class WordCounter(object):
     def read_text_file(self, file_path):
         """
         Takes a filepath to a plain text file and adds all of the alphanumeric
-        words in that text file into the classes memory.
+        words in that text file into the class's memory.
         """
         for f_line in open(file_path):
             self.read_text_string(f_line)
@@ -78,7 +78,7 @@ class WordCounter(object):
     def _update_word_counts(self, words_list):
         """
         A helper function that's supposed to help track the number of
-        occurances of words as more text is read into the counter by
+        occurrences of words as more text is read into the counter by
         manipulating our internal 'memory' structures.
         """
         current_word_counts = self._get_word_counts(words_list)
@@ -93,7 +93,7 @@ class WordCounter(object):
     def get_most_frequent_words(self, number_of_words):
         """
         Returns a list of words which are the most frequently used words in the
-        text we have read so far. This list is orded most frequently used word
+        text we have read so far. This list is ordered most frequently used word
         first and has a length == number_of_words.
 
         :param number_of_words: Specifies how many top words to return. For
@@ -106,7 +106,7 @@ class WordCounter(object):
 
     def get_words_by_count(self, count):
         """
-        Returns a list of words which have occured in the input text the number
+        Returns a list of words which have occurred in the input text the number
         of times specified by count. If you pass in 10 for count, you will get
         all words that occur in the text exactly 10 times.
         """
