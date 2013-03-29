@@ -50,8 +50,8 @@ class TestWordCounter(unittest.TestCase):
         that they are the words we expected.
         """
         c = self._make_jungle_book_counter()
-        fourtytwo_count_words = c.get_words_by_count(42)
-        self.assertItemsEqual(fourtytwo_count_words,
+        fortytwo_count_words = c.get_words_by_count(42)
+        self.assertItemsEqual(fortytwo_count_words,
                               self.FORTY_TWO_COUNT_WORDS)
 
     def test_get_unique_words(self):
