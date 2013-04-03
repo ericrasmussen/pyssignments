@@ -15,6 +15,7 @@ to change a line of code in tests.py.
 import re
 from collections import defaultdict
 
+
 class WordCounter(object):
     """
     WordCounter examines some input text and allows you to query various
@@ -89,7 +90,6 @@ class WordCounter(object):
             else:
                 self._word_counts[word] = current_count
 
-
     def get_most_frequent_words(self, number_of_words):
         """
         Returns a list of words which are the most frequently used words in the
@@ -130,3 +130,31 @@ class WordCounter(object):
         comp_word_list = self.get_word_list(comparative_string)
         # Figure out which new words are shared with already counted words.
         return []
+
+    def generate_word_count_strings(self):
+        """
+        Generates strings which follow a specific format which describes how
+        many times a given word has been counted. Will generate strings until
+        a string has been generated for every unique word that has been read
+        by the WordCounter.
+
+        For example, given the text input:
+            'Hank is a man. A man is Frank.'
+        This function will generate the following series of strings:
+             The word 'hank' has been counted 1 time.
+             The word 'is' has been counted 2 times.
+             The word 'a' has been counted 2 times.
+             The word 'man' has been counted 2 times.
+             The word frank has been counted 1 time.
+
+        Try to keep this function efficient. If we have read a very large
+        text input it would be silly to store a HUGE list of strings in memory
+        , each of which differs from all the others by only a few characters.
+        """
+        string_format = "The word '%(word)s' has been counted %(count)s times."
+        word = "test word"
+        count = 10
+
+        word_count_string = string_format % {"word": word, "count": count}
+
+        return word_count_string
