@@ -65,6 +65,11 @@ class TestWordCounter(unittest.TestCase):
         self.assertItemsEqual(unique_words, self.UNIQUE_WORDS)
 
     def test_shared_words_in_string(self):
+        """
+        Get the words that are shared between two strings and check that they
+        are the expected words.
+        """
+
         base_string = """
             This is a string that has some words in it which will be shared
             with another string. Only time will tell which words these may be.
@@ -77,6 +82,10 @@ class TestWordCounter(unittest.TestCase):
         self.assertItemsEqual(shared_words, expected_shared_words)
 
     def test_generate_word_count_strings(self):
+        """
+        Test that generate_word_count_strings generates the expected strings.
+        """
+
         example_string = "Bob is bob and not dave. " \
             " Dave is a man and not a monkey." \
             " Oh Man! I wish I had a pet monkey."
@@ -102,4 +111,4 @@ class TestWordCounter(unittest.TestCase):
         for word_count_string in c.generate_word_count_strings():
             word_count_strings.remove(word_count_string)
 
-        self.assertIsEmpty(word_count_strings)
+        self.assertSequenceEqual(word_count_strings, [])
