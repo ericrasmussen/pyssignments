@@ -63,3 +63,52 @@ class TestWordCounter(unittest.TestCase):
         c.read_text_string(self.TEST_TEXT)
         unique_words = c.get_unique_words()
         self.assertItemsEqual(unique_words, self.UNIQUE_WORDS)
+
+    def test_shared_words_in_string(self):
+        """
+        Get the words that are shared between two strings and check that they
+        are the expected words.
+        """
+
+        base_string = """
+            This is a string that has some words in it which will be shared
+            with another string. Only time will tell which words these may be.
+        """
+        comparative_string = "This is just another string buying some time."
+        expected_shared_words = ("this", "is", "another", "string", "time")
+        c = self._make_counter()
+        c.read_text_string(base_string)
+        shared_words = c.shared_words_in_string(comparative_string)
+        self.assertItemsEqual(shared_words, expected_shared_words)
+
+    def test_generate_word_count_strings(self):
+        """
+        Test that generate_word_count_strings generates the expected strings.
+        """
+
+        example_string = "Bob is bob and not dave. " \
+            " Dave is a man and not a monkey." \
+            " Oh Man! I wish I had a pet monkey."
+
+        word_count_strings = ["The word 'bob' has been counted 2 times.",
+            "The word 'is' has been counted 2 times.",
+            "The word 'and' has been counted 2 times.",
+            "The word 'not' has been counted 2 times.",
+            "The word 'dave' has been counted 2 times.",
+            "The word 'a' has been counted 3 times.",
+            "The word 'man' has been counted 2 times.",
+            "The word 'monkey' has been counted 2 times.",
+            "The word 'oh' has been counted 1 time.",
+            "The word 'i' has been counted 2 times.",
+            "The word 'wish' has been counted 1 time.",
+            "The word 'had' has been counted 1 time.",
+            "The word 'pet' has been counted 1 time."
+        ]
+
+        c = self._make_counter()
+        c.read_text_string(example_string)
+
+        for word_count_string in c.generate_word_count_strings():
+            word_count_strings.remove(word_count_string)
+
+        self.assertSequenceEqual(word_count_strings, [])
