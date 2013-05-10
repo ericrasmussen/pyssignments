@@ -75,7 +75,7 @@ class TestWordCounter(unittest.TestCase):
             with another string. Only time will tell which words these may be.
         """
         comparative_string = "This is just another string buying some time."
-        expected_shared_words = ("this", "is", "another", "string", "time")
+        expected_shared_words = ("this", "is", "another", "some", "string", "time")
         c = self._make_counter()
         c.read_text_string(base_string)
         shared_words = c.shared_words_in_string(comparative_string)
